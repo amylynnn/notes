@@ -1,0 +1,12 @@
+<!-- app/views/love_notes/new.html.erb -->
+
+<div class="new-love-note-container">
+  <h1>New Love Note</h1>
+  <br>
+
+  <%= render 'form', love_note: @love_note %>
+
+  <br>
+
+  <%= link_to 'Back to Love Notes', love_notes_path, class: 'btn btn-secondary' %>
+</div>

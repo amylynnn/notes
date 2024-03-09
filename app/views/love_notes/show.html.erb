@@ -1,0 +1,16 @@
+<!-- app/views/love_notes/show.html.erb -->
+
+<!-- app/views/love_notes/show.html.erb -->
+
+<div class="love-note-show">
+  <h1><%= @love_note.title %></h1>
+      <p><strong>Date:</strong> <%= @love_note.date&.strftime('%B %d, %Y') %></p>
+  <div class="letter-content">
+    <p><%= @love_note.message %></p>
+  </div>
+<br>
+  <%= link_to '🔙', love_notes_path, class: 'btn btn-secondary' %>
+  <br>
+<%= link_to 'Delete', @love_note, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+
+</div>

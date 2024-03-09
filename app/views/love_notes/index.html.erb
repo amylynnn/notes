@@ -1,0 +1,59 @@
+<div class="container">
+  <h1>For my love.</h1>
+
+<h3>Love-filled place just for us, Love-packed just like us. Every pixel here is a pixel filled with love for you! <%= link_to '✍️', new_love_note_path %></h2>
+ <br>
+
+<button id="complimentButton" class="compliment-button">Click me 💙</button>
+  <p id="complimentOutput" class="compliment-output"></p>
+
+<br>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var complimentButton = document.getElementById('complimentButton');
+    var complimentOutput = document.getElementById('complimentOutput');
+    var loveNotes = document.querySelectorAll('.love-note');
+
+    complimentButton.addEventListener('click', function() {
+      var compliments = [
+        'Your smile means everything to me',
+        'You make the world a better place!',
+        'I love you so much<3',
+        'I feel lucky to have you by my side in both good times and bad',
+        'The way you express love makes me feel cherished and special.',
+        'Talking with you is always a highlight of my day.',
+      ];
+
+      var randomIndex = Math.floor(Math.random() * compliments.length);
+      var randomCompliment = compliments[randomIndex];
+
+      complimentOutput.textContent = randomCompliment;
+      complimentOutput.classList.add('visible');
+    });
+
+    loveNotes.forEach(function(loveNote) {
+      loveNote.addEventListener('click', function() {
+        var fullContent = loveNote.querySelector('.full-content');
+        if (fullContent) {
+          fullContent.classList.toggle('hidden');
+          fullContent.classList.toggle('visible');
+        }
+      });
+    });
+  });
+</script>
+
+
+
+<div class="love-notes-grid">
+  <% @love_notes.each do |love_note| %>
+    <div class="love-note">
+      <h3><%= love_note.title %></h3>
+      <p><%= love_note.message %></p>
+      <p><strong>📅:</strong> <%= love_note.date&.strftime('%B %d, %Y') %></p>
+      <%= link_to 'Read me :)', love_note, class: 'btn' %>
+      <div class="sticky-note"></div>
+    </div>
+  <% end %>
+</div>
+</div>
